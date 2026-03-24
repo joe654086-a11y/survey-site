@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-
+import React, { useState } from "react";
 const stripePromise = loadStripe("YOUR_STRIPE_PUBLISHABLE_KEY");
 
 export default function App() {
