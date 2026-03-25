@@ -1,39 +1,8 @@
 import React, { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-
-const stripePromise = loadStripe("pk_test_51TDsIo07nriJUSeFyeedy2a2lsNEqwZW79voe3WxGnJxZp5TTb5vBkez6Lu8BbpSsqSg7Z41NYS3tL3A7kWHWPq800IdAHQvYe");
 
 export default function App() {
+  // Check if user returned from a successful payment
   const [paid] = useState(window.location.search.includes("success=true"));
-
- const handleCheckout = async () => {
-  console.log("CLICKED");
-
-  const stripe = await stripePromise;
-  console.log("STRIPE:", stripe); 
-
-  if (!stripe) {
-    alert("Stripe failed to load");
-    return;
-  }
-
-  const { error } = await stripe.redirectToCheckout({
-    lineItems: [
-      {
-        price: "price_1TEgpf07nriJUSeFaaZtAl8P",
-        quantity: 1,
-      },
-    ],
-    mode: "payment",
-    successUrl: window.location.href + "?success=true",
-    cancelUrl: window.location.href,
-  });
-
-  if (error) {
-    console.error("ERROR:", error);
-    alert(error.message);
-  }
-  };
 
   return (
     <div style={{ fontFamily: "Arial", padding: 20, maxWidth: 800, margin: "0 auto" }}>
@@ -43,9 +12,12 @@ export default function App() {
       {!paid ? (
         <>
           <h2>$59.99</h2>
-         <a href="https://buy.stripe.com/test_7sY3cn2Qo6CF7AU7tV7N600?redirect_url=https://https://survey-site-mm7a-p80ctfh6b-joe654086-5194s-projects.vercel.app/?success=true">
-  <button>Purchase & Start Survey</button>
-</a>
+          {/* Stripe Payment Link button */}
+          <a
+            href="https://buy.stripe.com/test_7sY3cn2Qo6CF7AU7tV7N600?redirect_url=https://survey-site-mm7a-p80ctfh6b-joe654086-5194s-projects.vercel.app/?success=true"
+          >
+            <button>Purchase & Start Survey</button>
+          </a>
         </>
       ) : (
         <form style={{ marginTop: 20 }}>
