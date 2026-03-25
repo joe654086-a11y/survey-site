@@ -17,7 +17,7 @@ export default function App() {
     const { error } = await stripe.redirectToCheckout({
       lineItems: [
         {
-          price: "price_1TEg1s07nriJUSeFveM5020v", //
+          price: "price_1TEgpf07nriJUSeFaaZtAl8P", //
           quantity: 1,
         },
       ],
