@@ -14,14 +14,14 @@ export default function App() {
   return (
     <div style={{ fontFamily: "Arial", padding: 20, maxWidth: 800, margin: "0 auto" }}>
       <h1>Premium Survey</h1>
-      <p>Take our exclusive survey and unlock personalized insights.</p>
+      <p>Take our exclusive survey and unlock a a chance to win the house for rent.</p>
 
       {!paid ? (
         <>
           <h2>$59.99</h2>
           {/* Stripe Payment Link button */}
           <a
-            href="https://buy.stripe.com/test_7sY3cn2Qo6CF7AU7tV7N600?redirect_url=https://survey-site-mm7a-p80ctfh6b-joe654086-5194s-projects.vercel.app/?success=true"
+            href="https://buy.stripe.com/test_7sY3cn2Qo6CF7AU7tV7N600?redirect_url=https:redirect/survey-site-mm7a-p80ctfh6b-joe654086-5194s-projects.vercel.app/?success=true"
           >
             <button>Purchase & Start Survey</button>
           </a>
