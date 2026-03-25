@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe("YOUR_STRIPE_PUBLISHABLE_KEY");
+const stripePromise = loadStripe("pk_test_51TDsIo07nriJUSeFyeedy2a2lsNEqwZW79voe3WxGnJxZp5TTb5vBkez6Lu8BbpSsqSg7Z41NYS3tL3A7kWHWPq800IdAHQvYe");
 
 export default function App() {
   const [paid, setPaid] = useState(window.location.search.includes("success=true"));
@@ -17,7 +17,7 @@ export default function App() {
           <button onClick={async () => {
             const stripe = await stripePromise;
             await stripe.redirectToCheckout({
-              lineItems: [{ price: "YOUR_STRIPE_PRICE_ID", quantity: 1 }],
+              lineItems: [{ price: price_1TEg1s07nriJUSeFveM5020v, quantity: 1 }],
               mode: "payment",
               successUrl: window.location.href + "?success=true",
               cancelUrl: window.location.href,
