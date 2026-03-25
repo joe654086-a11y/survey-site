@@ -17,7 +17,7 @@ export default function App() {
           <button onClick={async () => {
             const stripe = await stripePromise;
             await stripe.redirectToCheckout({
-              lineItems: [{ price: price_1TEg1s07nriJUSeFveM5020v, quantity: 1 }],
+              lineItems: [{ price: "price_1TEg1s07nriJUSeFveM5020v", quantity: 1 }],
               mode: "payment",
               successUrl: window.location.href + "?success=true",
               cancelUrl: window.location.href,
