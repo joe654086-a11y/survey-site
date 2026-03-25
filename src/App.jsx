@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function App() {
-  // Check if user returned from a successful payment
-  const [paid] = useState(window.location.search.includes("success=true"));
+  // Check if the URL has ?success=true
+  const [paid, setPaid] = useState(false);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("success") === "true") {
+      setPaid(true);
+    }
+  }, []);
 
   return (
     <div style={{ fontFamily: "Arial", padding: 20, maxWidth: 800, margin: "0 auto" }}>
