@@ -6,30 +6,33 @@ const stripePromise = loadStripe("pk_test_51TDsIo07nriJUSeFyeedy2a2lsNEqwZW79voe
 export default function App() {
   const [paid] = useState(window.location.search.includes("success=true"));
 
-  const handleCheckout = async () => {
-    const stripe = await stripePromise;
+ const handleCheckout = async () => {
+  console.log("CLICKED");
 
-    if (!stripe) {
-      alert("Stripe failed to load");
-      return;
-    }
+  const stripe = await stripePromise;
+  console.log("STRIPE:", stripe); 
 
-    const { error } = await stripe.redirectToCheckout({
-      lineItems: [
-        {
-          price: "price_1TEgpf07nriJUSeFaaZtAl8P", //
-          quantity: 1,
-        },
-      ],
-      mode: "payment",
-      successUrl: window.location.href + "?success=true",
-      cancelUrl: window.location.href,
-    });
+  if (!stripe) {
+    alert("Stripe failed to load");
+    return;
+  }
 
-    if (error) {
-      console.error(error);
-      alert(error.message);
-    }
+  const { error } = await stripe.redirectToCheckout({
+    lineItems: [
+      {
+        price: "price_1TEgpf07nriJUSeFaaZtAl8P",
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    successUrl: window.location.href + "?success=true",
+    cancelUrl: window.location.href,
+  });
+
+  if (error) {
+    console.error("ERROR:", error);
+    alert(error.message);
+  }
   };
 
   return (
