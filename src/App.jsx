@@ -43,9 +43,9 @@ export default function App() {
       {!paid ? (
         <>
           <h2>$59.99</h2>
-          <button onClick={handleCheckout}>
-            Purchase & Start Survey
-          </button>
+         <a href="https://buy.stripe.com/test_7sY3cn2Qo6CF7AU7tV7N600?redirect_url=https://https://survey-site-mm7a-p80ctfh6b-joe654086-5194s-projects.vercel.app/?success=true">
+  <button>Purchase & Start Survey</button>
+</a>
         </>
       ) : (
         <form style={{ marginTop: 20 }}>
