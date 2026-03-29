@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 export default function App() {
-  // Check if the URL has ?success=true
   const [paid, setPaid] = useState(false);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get("success") === "true") {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("success") === "true") {
       setPaid(true);
     }
   }, []);
@@ -14,20 +13,19 @@ export default function App() {
   return (
     <div style={{ fontFamily: "Arial", padding: 20, maxWidth: 800, margin: "0 auto" }}>
       <h1>Premium Survey</h1>
-      <p>Take our exclusive survey and unlock a a chance to win the house for rent.</p>
+      <p>Take our exclusive survey and unlock personalized insights.</p>
 
       {!paid ? (
         <>
           <h2>$59.99</h2>
-          {/* Stripe Payment Link button */}
-          <a
-            href="https://buy.stripe.com/test_7sY3cn2Qo6CF7AU7tV7N600?redirect_url=https:redirect/survey-site-mm7a-p80ctfh6b-joe654086-5194s-projects.vercel.app/?success=true"
-          >
+          <a href="https://buy.stripe.com/test_7sY3cn2Qo6CF7AU7tV7N600">
             <button>Purchase & Start Survey</button>
           </a>
         </>
       ) : (
         <form style={{ marginTop: 20 }}>
+          <h2>✅ Payment Successful — Survey Unlocked</h2>
+
           <p>1. How old are you?</p>
           <input style={{ width: "100%", marginBottom: 10 }} />
 
